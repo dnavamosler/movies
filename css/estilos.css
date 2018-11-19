@@ -31,7 +31,6 @@ h2{
     padding: 0;
     font-size: 1.7em;
     margin: 0;
-    align-self: center;
 }
 
 /* contenedor grid */
@@ -40,9 +39,18 @@ h2{
     grid-template-rows: 70px 1fr ;
     grid-template-columns: 120px 1fr ;
     grid-template-areas: "header header "
-                         "aside content ";
+                         "content content ";
     height: 100vh;
 
+}
+
+@media only screen and (min-width: 768px){
+    .container{
+        grid-template-rows: 70px 1fr ;
+        grid-template-columns: 120px 1fr ;
+        grid-template-areas: "header header "
+                             "aside content ";
+    }
 }
 
 /* header */
@@ -89,16 +97,25 @@ header figure img{
 
 
 
-/* aside */
-
+/* ----------------------------------------
+   ----------------------------------------
+            Aside (navegacion)
+    ---------------------------------------
+    --------------------------------------- */
 aside{
-    width: 120px;
-    grid-area: aside;
+    display: none;
     background-color: #fc6262;
     z-index: 10;
     position: fixed;
+    width: 120px;
     top: 70px;
     height: calc(100vh - 70px);
+}
+
+@media only screen and (min-width: 768px){
+    aside{ 
+          display: block;
+         }
 }
 aside nav{
     display: flex;
@@ -118,114 +135,108 @@ aside nav a:last-child{
     margin-top: auto;
 }
 nav img{
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
 }
 nav a h4{
     font-size: 1em;
     text-decoration: none;
 }
 
-/* contenido-principal */
+/* ----------------------------------------
+   ----------------------------------------
+            contenido principal
+    ---------------------------------------
+    --------------------------------------- */
 main{
     grid-area: content;
     display: grid;
-    padding: 15px 30px;
-    grid-gap: 10px 40px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50px 1fr 50px 1fr 50px 1fr;
-    grid-template-areas: "tittle-1 tittle-1 tittle-1"
-                         "film-1 film-2 film-3"
-                         "tittle-2 tittle-2 tittle-2"
-                         "film-4 film-5 film-6"
-                         "tittle-3 tittle-3 tittle-3"
-                         "film-7 film-8 film-9";
+    grid-template-columns: 1fr;
+    grid-auto-rows: 35px 1fr 1fr 1fr;
+    padding: 0 35px;
+    grid-row-gap: 20px;
+    margin: 20px 0;
 }
-
+main h2{
+    align-self: center;
+    grid-column: 1/-1;
+}
+@media only screen and (min-width: 768px){
+    main{
+        padding: 15px 30px;
+        grid-gap: 30px 30px;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 35px 1fr 1fr;
+    }
+}
+@media only screen and (min-width: 1024px){
+    main{
+        padding: 15px 30px;
+        grid-gap: 10px 20px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 50px 1fr 50px 1fr 50px 1fr;
+}
+}
+/* ----------------------------------------
+   ----------------------------------------
+            contenedor film
+    ---------------------------------------
+    --------------------------------------- */
 .film{
     position: relative;
     overflow: hidden;
 }
-.film .film-info{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(252, 98, 98, 0.8);
-    color: white;
-    padding: 20px 10px 0px 10px;
-    transition: all .3s ease;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    overflow: hidden;
-}
-.film .film-info h3{
-    font-size: 1.3em;
-    line-height: 1.4em;
-    margin: 0;
-    font-family: montserrat;
-    letter-spacing: 1px;
-}
-
-.film .film-info p{
-    font-size: 0.9em;
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.5em;
-    margin: 0;
-    padding: 5px 0 10px 0;
-}
-
 .film img{
     width: 100%;
     vertical-align: top;
 }
-a.film:hover .film-info {
+
+/* ----------------------------------------
+   ----------------------------------------
+            informacion de film
+    ---------------------------------------
+    --------------------------------------- */
+.film .film-info{
+    position: absolute;
+    bottom: -80%;
+    left: 0;
+    background-color: rgba(252, 98, 98, 0.8);
+    color: white;
+    padding: 0px 10px 0px 10px;
+    transition: all .3s ease;
     height: 100%;
-    font-size: 105%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding: 0 20px;
+    width: 100%;
+}
+a.film:hover .film-info {
+    transform: translateY(-80%);
+    
+}
+@media only screen and (min-width: 768px){
+    .film .film-info{
+        bottom: -70%;
+    }
+    a.film:hover .film-info {
+        transform: translateY(-70%);
+    }
 }
 
-/* seccion 1 */
-main h2:nth-of-type(1){
-    grid-area: tittle-1;
 
+.film .film-info h3{
+    font-size: 1.1em;
+    margin: 4% 0;
+    font-family: montserrat;
+    letter-spacing: 1px;
 }
-main .film:nth-of-type(1){
-    grid-area: film-1;
+.film-info p{
+    display: none;
+    margin-top: 0;
 }
-main .film:nth-of-type(2){
-    grid-area: film-2;
-}
-main .film:nth-of-type(3){
-    grid-area: film-3;
-}
-
-/* seccion 2 */
-main h2:nth-of-type(2){
-    grid-area: tittle-2;
-
-}
-main .film:nth-of-type(4){
-    grid-area: film-4;
-}
-main .film:nth-of-type(5){
-    grid-area: film-5;
-}
-main .film:nth-of-type(6){
-    grid-area: film-6;
+a.film:hover .film-info p {    
+    display: block;
 }
 
-/* seccion 3 */
-main h2:nth-of-type(3){
-    grid-area: tittle-3;
-
-}
-main .film:nth-of-type(7){
-    grid-area: film-7;
-}
-main .film:nth-of-type(8){
-    grid-area: film-8;
-}
-main .film:nth-of-type(9){
-    grid-area: film-9;
-}
