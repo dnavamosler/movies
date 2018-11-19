@@ -1,6 +1,8 @@
-/* extras */
-
-/* modelo de caja */
+/* ----------------------------------------
+   ----------------------------------------
+               EXTRAS
+    ---------------------------------------
+    --------------------------------------- */
 html{
     box-sizing: border-box;
 }
@@ -33,13 +35,17 @@ h2{
     margin: 0;
 }
 
-/* contenedor grid */
+/* ----------------------------------------
+   ----------------------------------------
+            CONTENEDOR PADRE
+    ---------------------------------------
+    --------------------------------------- */
 .container{
     display: grid;
     grid-template-rows: 70px 1fr ;
-    grid-template-columns: 120px 1fr ;
-    grid-template-areas: "header header "
-                         "content content ";
+    grid-template-columns:  1fr ;
+    grid-template-areas: "header "
+                         "content  ";
     height: 100vh;
 
 }
@@ -53,7 +59,11 @@ h2{
     }
 }
 
-/* header */
+/* ----------------------------------------
+   ----------------------------------------
+            HEADER
+    ---------------------------------------
+    --------------------------------------- */
 
 header{
     grid-area: header;
@@ -71,6 +81,10 @@ header{
     z-index: 9;
     top: 0;
     height: 70px;
+}
+
+@media only screen and (min-width: 768px){
+    
 }
 header input{
     width: 460px;
