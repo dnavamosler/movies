@@ -68,31 +68,45 @@ h2{
 header{
     grid-area: header;
     position: fixed;
-    padding: 0 35px;
-    background-color: #ffffff;
-    display: flex;
-    width: 100%;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
     webkit-box-shadow: 0px 4px 10px 2px rgb(238, 235, 235);
     -moz-box-shadow: 0px 4px 10px 2px rgba(163,163,163,1);
     box-shadow: 0px 4px 10px 2px rgb(238, 235, 235);
     z-index: 9;
     top: 0;
-    height: 70px;
-}
-
-@media only screen and (min-width: 768px){
+    grid-auto-rows: 70px 50px 50px;
+    grid-template-columns: 1fr;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 0 35px;
+    display: grid;    
+    align-items: center;
+    justify-items: center;
     
 }
+@media only screen and (min-width: 768px){
+    header{
+        grid-template-rows: 70px;
+         grid-template-columns: 1fr 2fr 1fr;
+    }
+}
 header input{
-    width: 460px;
+    width: 100%;
+    min-width: 200px;
     height: 35px;
     border-radius: 5px;
     border: 1px solid #a8a6b1;
     font-size: 1.1em;
     padding: 0 20px;
+    justify-self: center;
+    display: none;
+
+}
+@media only screen and (min-width: 768px){
+    header input{
+        width:65%;
+        display: block;
+        
+    }
 }
 header figure img{
     width: 200px;
@@ -102,6 +116,15 @@ header figure img{
     width: 200px;
     justify-content: space-between;
     align-items: center;
+    justify-self: center;
+    display: none;
+}
+@media only screen and (min-width: 768px){
+    .user-settings{
+        display: flex;
+        justify-self: end;
+        
+    }
 }
 .user-settings figure img{
     width: 45px;
